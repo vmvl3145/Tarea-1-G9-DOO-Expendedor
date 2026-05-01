@@ -1,0 +1,1 @@
+/** Debe contener el bucle while y el Scanner para la interacción continua. */
