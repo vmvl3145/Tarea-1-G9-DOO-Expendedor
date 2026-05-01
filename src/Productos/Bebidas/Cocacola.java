@@ -1,8 +1,11 @@
 package Productos.Bebidas;
-/**
- * - Debe sobreescribir el método consumir().
- * - Debe retornar el String "cocacola"
- */
+
 public class Cocacola extends Bebida {
-    // Implementar consumir() aquí
+    public Cocacola() {
+        super();
+    }
+    @Override
+    public String consumir() {
+        return "cocacola";
+    }
 }

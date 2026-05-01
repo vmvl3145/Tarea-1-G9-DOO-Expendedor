@@ -1,8 +1,11 @@
 package Productos.Bebidas;
-/**
- * - Debe sobreescribir el método consumir().
- * - Debe retornar el String "fanta"
- */
+
 public class Fanta extends Bebida {
-    // Implementar consumir() aquí
+    public Fanta() {
+        super();
+    }
+    @Override
+    public String consumir() {
+        return "fanta";
+    }
 }
