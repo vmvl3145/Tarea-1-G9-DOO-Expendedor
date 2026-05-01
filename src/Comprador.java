@@ -10,7 +10,7 @@ public class Comprador {
     private String saborConsumido;
     private int vueltoTotal;
 
-    public Comprador(Moneda moneda, Enumeracion seleccion, Expendedor expendedor)
+    public Comprador(Moneda moneda, int seleccion, Expendedor expendedor)
             throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
 
         //ejecutar compra y consumir producto haciendo una cadena (no se guarda como atributo)

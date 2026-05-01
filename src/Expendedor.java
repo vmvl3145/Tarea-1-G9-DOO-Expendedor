@@ -43,6 +43,18 @@ public class Expendedor {
     }
  // get deposito
     private Deposito<Producto> getDeposito(Enumeracion seleccion) {
+
+    private Enumeracion getEnumeracion(int seleccion) {
+    switch (seleccion) {
+        case 1: return Enumeracion.COCA_COLA;
+        case 2: return Enumeracion.SPRITE;
+        case 3: return Enumeracion.FANTA;
+        case 4: return Enumeracion.SNICKERS;
+        case 5: return Enumeracion.SUPER8;
+        default: throw new IllegalArgumentException("Numero de deposito invalido.");
+    }
+}
+
     switch (seleccion) {
         case COCA_COLA: return cocacola;
         case SPRITE:    return sprite;
@@ -54,12 +66,12 @@ public class Expendedor {
 }
 
 // comprar producto. revisa excepciones, devuelve vuelto en monedas de 100 y retorna el producto.
-public Producto comprarProducto(Moneda moneda, Enumeracion seleccion)
+public Producto comprarProducto(Moneda moneda, int seleccion)
         throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
     if (moneda == null) {
         throw new PagoIncorrectoException("No se ha pagado.");
     }
-    
+
     if (moneda.getValor() < seleccion.getPrecio()) {
     montoVuelto.add(moneda); // devolver la misma moneda
     throw new PagoInsuficienteException("Pago insuficiente para " + seleccion.getNombre());
