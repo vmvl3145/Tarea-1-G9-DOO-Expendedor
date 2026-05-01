@@ -3,7 +3,7 @@ public enum Enumeracion {
     COCA_COLA(1000, "CocaCola"),
     SPRITE(900, "Sprite"),
     FANTA(900, "Fanta"),
-    SNICKERS(500, "Snickers"),
+    SNICKERS(600, "Snickers"),
     SUPER8(300, "Super8");
 
     private final int precio;
@@ -13,6 +13,10 @@ public enum Enumeracion {
         this.precio = precio;
         this.nombre = nombre;
     }
-    public int getPrecio() { return precio; }
-    public String getNombre() { return nombre; }
+    public int getPrecio() {
+        return precio;
+    }
+    public String getNombre() {
+        return nombre;
+    }
 }
