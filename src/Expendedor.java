@@ -41,10 +41,12 @@ public class Expendedor {
             super8.add(new Super8());
         }
     }
- // get deposito
-    private Deposito<Producto> getDeposito(Enumeracion seleccion) {
 
-    private Enumeracion getEnumeracion(int seleccion) {
+
+ /** @param seleccion Numero del deposito elegido
+ * @return La Enumeracion correspondiente
+ */
+private Enumeracion getEnumeracion(int seleccion) {
     switch (seleccion) {
         case 1: return Enumeracion.COCA_COLA;
         case 2: return Enumeracion.SPRITE;
@@ -55,6 +57,11 @@ public class Expendedor {
     }
 }
 
+/**devuelve el deposito correspondiente al producto seleccionado
+ * @param seleccion enum del producto
+ * @return deposito correspondiente
+ */
+private Deposito<Producto> getDeposito(Enumeracion seleccion) {
     switch (seleccion) {
         case COCA_COLA: return cocacola;
         case SPRITE:    return sprite;
@@ -66,26 +73,36 @@ public class Expendedor {
 }
 
 // comprar producto. revisa excepciones, devuelve vuelto en monedas de 100 y retorna el producto.
-public Producto comprarProducto(Moneda moneda, int seleccion)
+/** Compra un producto del expendedor
+ * @param moneda Moneda con la que se paga
+ * @param numero Numero del deposito del producto deseado
+ * @return El producto comprado
+ */
+public Producto comprarProducto(Moneda moneda, int numero)
         throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
+
     if (moneda == null) {
         throw new PagoIncorrectoException("No se ha pagado.");
     }
 
+    Enumeracion seleccion = getEnumeracion(numero);
+
+    // verificar stock
+    Deposito<Producto> deposito = getDeposito(seleccion);
+    Producto producto = deposito.get();
+    if (producto == null) {
+        montoVuelto.add(moneda);
+        throw new NoHayProductoException("No queda " + seleccion.getNombre());
+    }
+
+    //despues verificar precio
     if (moneda.getValor() < seleccion.getPrecio()) {
-    montoVuelto.add(moneda); // devolver la misma moneda
-    throw new PagoInsuficienteException("Pago insuficiente para " + seleccion.getNombre());
-}
+        montoVuelto.add(moneda);
+        throw new PagoInsuficienteException("Pago insuficiente para " + seleccion.getNombre());
+    }
 
-Producto producto = deposito.get();
-
-if (producto == null) {
-    montoVuelto.add(moneda); //devolver la misma moneda
-    throw new NoHayProductoException("No queda " + seleccion.getNombre());
-}
-//confirmado que se compro, devolvemos vuelto.
+    //confirmado que se compro, devolvemos vuelto.
     int vuelto = moneda.getValor() - seleccion.getPrecio();
-
     while (vuelto >= 100) {
         montoVuelto.add(new Moneda100());
         vuelto -= 100;
