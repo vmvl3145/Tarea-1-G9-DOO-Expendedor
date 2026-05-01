@@ -1,5 +1,8 @@
 package Excepciones;
-/**
- * - Se lanza cuando el valor de la moneda entregada es menor al precio del producto en Enumeracion
- */
-public class PagoInsuficienteException extends Exception {}
+
+/** Exception que se lanza cuando el valor de la moneda es menor al precio del producto. */
+public class PagoInsuficienteException extends Exception {
+    public PagoInsuficienteException(String mensaje) {
+        super(mensaje);
+    }
+}

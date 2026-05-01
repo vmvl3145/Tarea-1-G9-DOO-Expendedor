@@ -1,6 +1,8 @@
 package Excepciones;
-/**
- * - Debe recibir un mensaje en el constructor y pasarlo a super()
- * - Se lanza cuando un depósito está vacío o el índice solicitado no existe
- */
-public class NoHayProductoException extends Exception {}
+
+/** Exception que se lanza cuando ya no existe/hay stock */
+public class NoHayProductoException extends Exception {
+    public NoHayProductoException(String mensaje) {
+        super(mensaje);
+    }
+}

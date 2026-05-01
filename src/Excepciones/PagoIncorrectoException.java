@@ -1,5 +1,8 @@
 package Excepciones;
-/**
- * - Se lanza cuando se intenta realizar una compra pasando un null como moneda
- */
-public class PagoIncorrectoException extends Exception {}
+
+/** Exception que se lanza cuando el pago recibido es null */
+public class PagoIncorrectoException extends Exception {
+    public PagoIncorrectoException(String mensaje) {
+        super(mensaje);
+    }
+}
