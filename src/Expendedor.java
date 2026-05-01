@@ -59,16 +59,18 @@ public Producto comprarProducto(Moneda moneda, Enumeracion seleccion)
     if (moneda == null) {
         throw new PagoIncorrectoException("No se ha pagado.");
     }
+    
     if (moneda.getValor() < seleccion.getPrecio()) {
-        throw new PagoInsuficienteException("Pago insuficiente para " + seleccion.getNombre());
-    }
-//tras chequear dinero, ponemos el producto en el array.
-    Deposito<Producto> deposito = getDeposito(seleccion);
+    montoVuelto.add(moneda); // devolver la misma moneda
+    throw new PagoInsuficienteException("Pago insuficiente para " + seleccion.getNombre());
+}
 
-    Producto producto = deposito.get();
-    if (producto == null) {
-        throw new NoHayProductoException("No queda " + seleccion.getNombre());
-    }
+Producto producto = deposito.get();
+
+if (producto == null) {
+    montoVuelto.add(moneda); //devolver la misma moneda
+    throw new NoHayProductoException("No queda " + seleccion.getNombre());
+}
 //confirmado que se compro, devolvemos vuelto.
     int vuelto = moneda.getValor() - seleccion.getPrecio();
 
