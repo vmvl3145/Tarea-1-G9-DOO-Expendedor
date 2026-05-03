@@ -113,6 +113,25 @@ public class MainInteractivo {
                      continue;
                  }
 
+                 System.out.println("\nQue moneda deseas utilizar?");
+                 System.out.println("1. $100");
+                 System.out.println("2. $500");
+                 System.out.println("3. $1000");
+                 System.out.println("4. Forzar maquina a comprar sin moneda");
+
+                 int eleccionMoneda = scanner.nextInt();
+                 Moneda monedaInsertada = null;
+
+                 switch (eleccionMoneda) {
+                     case 1: monedaInsertada = new Moneda100(); break;
+                     case 2: monedaInsertada = new Moneda500(); break;
+                     case 3: monedaInsertada = new Moneda1000(); break;
+                     case 4: monedaInsertada = null; break;
+                     default:
+                         System.out.println("Opcion invalida. Usaras maquina sin moneda");
+                         monedaInsertada = null;
+                 }
+
                  System.out.println("\nProcesando compra...");
 
                  try {
