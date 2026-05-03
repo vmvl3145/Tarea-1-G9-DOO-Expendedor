@@ -16,7 +16,7 @@ public class Main {
         try {
             Comprador c1 = new Comprador(null, 1, exp);
         } catch (PagoIncorrectoException e) {
-            System.out.println("Excepcion capturada: " + e.getMessage());
+            System.out.println("Excepción capturada: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error inesperado" + e);
         }
@@ -44,12 +44,12 @@ public class Main {
 
             // Compra 1 (exitosa)
             Comprador c3 = new Comprador(m2, 1, exp);
-            System.out.println("Comprador 3 consumio: " + c3.getSaborConsumido());
+            System.out.println("Comprador 3 consumido: " + c3.getSaborConsumido());
 
             // Compra 2 (deberia lanzar exception)
             Comprador c4 = new Comprador(m3, 1, exp);
         } catch (NoHayProductoException e) {
-            System.out.println("Excepcion capturada: " + e.getMessage());
+            System.out.println("Excepción capturada: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error inesperado: " + e);
         }
