@@ -1,5 +1,6 @@
 package Productos;
-/** Clase abstracta que muestra un producto genérica referencia de la máquina */
+/**
+ * Clase abstracta que representa un producto genérico de la maquina expendedora*/
 public abstract class Producto {
     public Producto() {
     }

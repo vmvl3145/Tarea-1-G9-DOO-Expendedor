@@ -4,5 +4,5 @@ Desarrollo Orientado a Objetos | 501204 | 2026-1
 
 Integrantes:
 -Joaquín Adauy (2025405466)
--Joaquín Navarrete
--Vicente Vergara
+-Joaquín Navarrete (202542012)
+-Vicente Vergara (2025431734)

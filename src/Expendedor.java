@@ -72,12 +72,16 @@ private Deposito<Producto> getDeposito(Enumeracion seleccion) {
     }
 }
 
-// comprar producto. revisa excepciones, devuelve vuelto en monedas de 100 y retorna el producto.
-/** Compra un producto del expendedor
- * @param moneda Moneda con la que se paga
- * @param numero Numero del deposito del producto deseado
- * @return El producto comprado
- */
+    /**
+     * Intenta realizar la compra de un producto.
+     * Verifica la validación del pago, la existencia de stock y gestiona el vuelto.
+     * @param moneda Moneda entregada por el usuario para el pago.
+     * @param numero Indice del deposito del producto deseado.
+     * @return El objeto Producto extraido del deposito.
+     * @throws PagoIncorrectoException Si se intenta pagar con una moneda nula
+     * @throws NoHayProductoException Si el deposito seleccionado no tiene stock
+     * @throws PagoInsuficienteException Si el valor de la moneda es menor al precio del producto
+     */
 public Producto comprarProducto(Moneda moneda, int numero)
         throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
 
